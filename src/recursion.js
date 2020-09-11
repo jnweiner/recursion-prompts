@@ -70,11 +70,12 @@ var range = function(x, y) {
   if (x === y || Math.abs(x - y) === 1 || Math.abs(y - x) === 1) {
     return [];
   }
+  // We want to start at a difference of 2 because that's the first situation in which we have a range building (ex. range between 2,4 is 3)
   if (Math.abs(y - x) === 2) {
     if (x > y) {
       return [x - 1];
     } else {
-      return [x + 1];
+      return [x + 1]; // starts result array at [3] for example case
     }
   }
   if (x > y) {
@@ -83,7 +84,7 @@ var range = function(x, y) {
     return array;
   } else {
     let array = range(x, y - 1);
-    array.push(y - 1);
+    array.push(y - 1); // builds arrays to [3, 4] for example case
     return array;
   }
 
@@ -109,6 +110,11 @@ var powerOfTwo = function(n) {
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  if (string === '') {
+    return '';
+  }
+  return reverse(string.slice(1)) + string[0];
+
 };
 
 // 10. Write a function that determines if a string is a palindrome.
