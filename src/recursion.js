@@ -50,6 +50,17 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  // need to continuously add n to the number below it, until the number below it is 0
+  let isNeg = (n !== Math.abs(n));
+  if (n === 0) {
+    return 0;
+  }
+  if (isNeg) {
+    n += 1;
+  } else {
+      n -= 1;
+  }
+  return (n + sumBelow(n));
 };
 
 // 6. Get the integers within a range (x, y).
