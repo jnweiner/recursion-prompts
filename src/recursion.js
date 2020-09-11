@@ -58,7 +58,7 @@ var sumBelow = function(n) {
   if (isNeg) {
     n += 1;
   } else {
-      n -= 1;
+    n -= 1;
   }
   return (n + sumBelow(n));
 };
@@ -74,6 +74,9 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if (base === 0) {
+    return 1;
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -89,6 +92,17 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  string.split(' ').join('');
+  string = string.toLowerCase();
+  if (string.length === 0 || string.length === 1) {
+    return true;
+  }
+  if (string[0] === string[string.length - 1]) {
+    // strip off those and run palindrome again
+    return palindrome(string.slice(1, string.length - 1));
+  } else {
+    return false;
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
