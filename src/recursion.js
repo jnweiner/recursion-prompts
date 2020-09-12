@@ -96,6 +96,10 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if (exp < 0) {
+    exp = -exp;
+    base = (1 / base);
+  }
   if (exp === 0) {
     return 1;
   } else {
