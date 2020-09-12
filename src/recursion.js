@@ -349,6 +349,7 @@ var capitalizeWords = function(array) {
 // 28. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car','poop','banana']); // ['Car','Poop','Banana']
 
+// helper function for capitalizeFirst
 function capitalizeFirstLetter(word) {
   word = word.split('');
   word[0] = word[0].toUpperCase();
@@ -414,6 +415,26 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  if (array.length === 1) {
+    if (array[array.length - 1] < 0) {
+      array[array.length - 1] = -array[array.length - 1];
+    }
+    return [array[0]];
+  }
+  let alternatedArray = alternateSign(array.slice(0, array.length - 1));
+  let index = array.length - 1;
+  // even indexes need to have odd num, and odd indexes need to have even num
+  if (index % 2 === 1) {
+    if (array[index] > 0) {
+      array[index] = -array[index];
+    }
+  } else {
+    if (array[index] < 0) {
+      array[index] = -array[index];
+    }
+  }
+  alternatedArray.push(array[index]);
+  return alternatedArray;
 };
 
 // 36. Given a string, return a string with digits converted to their word equivalent.
